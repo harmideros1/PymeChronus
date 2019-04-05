@@ -16,6 +16,8 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
 
+import { AuthGuard } from "./guards/auth.guard";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { environment } from "../environments/environment";
     AngularFireModule.initializeApp(environment.firebaseConfig), 
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
