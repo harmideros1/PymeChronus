@@ -21,6 +21,14 @@
       <li class="nav-item" routerLinkActive="active" *ngIf="isLogin">
         <a class="nav-link" (click)="onClickLogout()">Salir</a>
       </li>
+      <li class="nav-item" *ngIf="isLogin">
+        <a class="nav-link">{{nombreUsuario}}</a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin">
+          <img src="{{fotoUsuario}}" class="rounded-circle" *ngIf="fotoUsuario">
+          <img src="https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png" class="rounded-circle" *ngIf="!fotoUsuario">
+          <span class="badge pill badge-secondary ml-3">{{emailUsuario}}</span>
+      </li>
     </ul>
 
   </div>

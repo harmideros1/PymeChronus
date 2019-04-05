@@ -23,18 +23,28 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmitLogin(){
+  onSubmitLogin() {
     this.authService.loginEmail(this.email, this.password)
-    .then( (res) => {
-      this.flasMensaje.show("Usuario logueado correctamente",
-        { cssClass: 'alert-success', timeout: 4000 });
-      this.router.navigate(['/privado'])
-    }).catch( (err) => {
-      // console.log(err);
-      this.flasMensaje.show(err.message,
-        { cssClass: 'alert-danger', timeout: 10000 });
-      this.router.navigate(['/login'])
-    })
+      .then((res) => {
+        this.flasMensaje.show("Usuario logueado correctamente",
+          { cssClass: 'alert-success', timeout: 4000 });
+        this.router.navigate(['/privado'])
+      }).catch((err) => {
+        // console.log(err);
+        this.flasMensaje.show(err.message,
+          { cssClass: 'alert-danger', timeout: 10000 });
+        this.router.navigate(['/login'])
+      })
+  }
+
+  onClickGoogleLogin() {
+    this.authService.loginGoogle()
+      .then((res) => {
+        this.router.navigate(['/privado']);
+      }).catch(err => {
+        console.log(err.message);
+
+      })
   }
 
 }
